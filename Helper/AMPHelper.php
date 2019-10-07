@@ -47,12 +47,22 @@ class AMPHelper
             $lead = $lead->getProfileFields();
         }
 
-	$amlsource="";
+	$ampsource="";
 	$pattern = "/<!--amlpart=(.*?)-->/sm";
 	preg_match_all($pattern, $content, $matches);
 	if (count($matches[0])) {
-		$amlsource = $matches[1][0];
+		$ampsource = $matches[1][0];
 		$content = preg_replace($pattern,"",$content);
+	}
+
+	$helper = $event->getHelper();
+	if("Mautic\EmailBundle\Helper\MailHelper" === get_class($helper)&&
+		!empty($ampsource)){
+		$helper->message->addPart(
+			'<!doctype html> <html ⚡4email>'
+			.$ampsource.
+			'</html>','text/x-amp-html; charset="UTF-8"'
+		);
 	}
 
         return $content;

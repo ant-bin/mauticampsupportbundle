@@ -47,6 +47,14 @@ class AMPHelper
             $lead = $lead->getProfileFields();
         }
 
+	$amlsource="";
+	$pattern = "/<!--amlpart=(.*?)-->/sm";
+	preg_match_all($pattern, $content, $matches);
+	if (count($matches[0])) {
+		$amlsource = $matches[1][0];
+		$content = preg_replace($pattern,"",$content);
+	}
+
         return $content;
     }
 }

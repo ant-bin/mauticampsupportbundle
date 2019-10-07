@@ -59,7 +59,7 @@ class EmailSubscriber extends CommonSubscriber
     public function onEmailGenerate(Events\EmailSendEvent $event)
     {
         $content = $event->getContent();
-        $content = $this->AMPHelper->processEmail($content,  $event->getLead());
+        $content = $this->AMPHelper->processEmail($content,  $event);
         $event->setContent($content);
     }
 

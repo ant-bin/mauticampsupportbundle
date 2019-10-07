@@ -36,12 +36,13 @@ class AMPHelper
 
     /**
      * @param string $content
-     * @param mixed $lead
+     * @param mixed $event
      * @return string
      */
-    public function processEmail($content, $lead)
+    public function processEmail($content, $event)
     {
         // convert Lead entity to array
+	$lead = $event->getLead();
         if($lead instanceof Lead){
             $lead = $lead->getProfileFields();
         }

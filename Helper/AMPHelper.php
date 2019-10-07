@@ -48,7 +48,7 @@ class AMPHelper
         }
 
 	$ampsource="";
-	$pattern = "/<!--amlpart=(.*?)-->/sm";
+	$pattern = "/<!--amppart=(.*?)-->/sm";
 	preg_match_all($pattern, $content, $matches);
 	if (count($matches[0])) {
 		$ampsource = $matches[1][0];

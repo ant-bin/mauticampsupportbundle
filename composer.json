@@ -1,0 +1,7 @@
+{
+  "name": "andrew/MauticAMPSupportBundle",
+  "type": "mautic-plugin",
+  "require": {
+    "mautic/composer-plugin": "^1.0"
+  }
+}
